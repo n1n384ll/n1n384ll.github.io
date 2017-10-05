@@ -1,41 +1,62 @@
 <html>
-    <h1>Mod Calc</h1>
-    <p>Select mod to optimize for:</p>
-    <select name="mod_selection1" id="mod_selection1">
-        <option value=""></option>
-        <option value="Acceleration Mod">Acceleration Mod</option>
-        <option value="Arc Impact Mod">Arc Impact Mod</option>
-        <option value="Arc Ordnance Mod">Arc Ordnance Mod</option>
-        <option value="Arc Paragon Mod">Arc Paragon Mod</option>
-        <option value="Energy Bracket Mod">Energy Bracket Mod</option>
-        <option value="Energy Counterbalance Mod">Energy Counterbalance Mod</option>
-        <option value="Impact Absorption Mod">Impact Absorption Mod</option>
-        <option value="Kinetic Counterbalance Mod">Kinetic Counterbalance Mod</option>
-        <option value="Kinetic Munition Loader">Kinetic Munition Loader</option>
-        <option value="Power Bracket Mod">Power Bracket Mod</option>
-        <option value="Power Munition Loader">Power Munition Loader</option>
-        <option value="Self-Repairing Mod">Self-Repairing Mod</option>
-        <option value="Solar Impact Mod">Solar Impact Mod</option>
-        <option value="Solar Ordnance Mod">Solar Ordnance Mod</option>
-        <option value="Solar Paragon Mod">Solar Paragon Mod</option>
-        <option value="Void Impact Mod">Void Impact Mod</option>
-        <option value="Void Ordnance Mod">Void Ordnance Mod</option>
-        <option value="Void Paragon Mod">Void Paragon Mod</option>
-    </select>
-    <br/>
-    <br/>
-    <button type="button" onclick="modCalc()">Calculate</button>
-    <button type="button" onclick="reset()">Reset</button>
-    <br/>
-    <br/>
-    <input id="helmet_check" type="checkbox"><span id="helmet_result">Helmet: </span><br/><br/>
-    <input id="arms_check" type="checkbox"><span id="arms_result">Arms: </span><br/><br/>
-    <input id="chest_check" type="checkbox"><span id="chest_result">Chest: </span><br/><br/>
-    <input id="legs_check" type="checkbox"><span id="legs_result">Legs: </span><br/><br/>
-    <input id="cloak_check" type="checkbox"><span id="cloak_result">Cloak: </span><br/><br/>
-    <input id="bond_check" type="checkbox"><span id="bond_result">Bond: </span><br/><br/>
-    <input id="mark_check" type="checkbox"><span id="mark_result">Mark: </span><br/><br/>
-    <script>
+	<h1>Mod Calc</h1>
+	<p>Select mod to optimize for:</p>
+	<select name="mod_selection1" id="mod_selection1">
+		<option value=""/>
+		<option value="Acceleration Mod">Acceleration Mod</option>
+		<option value="Arc Impact Mod">Arc Impact Mod</option>
+		<option value="Arc Ordnance Mod">Arc Ordnance Mod</option>
+		<option value="Arc Paragon Mod">Arc Paragon Mod</option>
+		<option value="Energy Bracket Mod">Energy Bracket Mod</option>
+		<option value="Energy Counterbalance Mod">Energy Counterbalance Mod</option>
+		<option value="Impact Absorption Mod">Impact Absorption Mod</option>
+		<option value="Kinetic Counterbalance Mod">Kinetic Counterbalance Mod</option>
+		<option value="Kinetic Munition Loader">Kinetic Munition Loader</option>
+		<option value="Power Bracket Mod">Power Bracket Mod</option>
+		<option value="Power Munition Loader">Power Munition Loader</option>
+		<option value="Self-Repairing Mod">Self-Repairing Mod</option>
+		<option value="Solar Impact Mod">Solar Impact Mod</option>
+		<option value="Solar Ordnance Mod">Solar Ordnance Mod</option>
+		<option value="Solar Paragon Mod">Solar Paragon Mod</option>
+		<option value="Void Impact Mod">Void Impact Mod</option>
+		<option value="Void Ordnance Mod">Void Ordnance Mod</option>
+		<option value="Void Paragon Mod">Void Paragon Mod</option>
+	</select>
+	<br/>
+	<br/>
+	<button type="button" onclick="modCalc()">Calculate</button>
+	<button type="button" onclick="reset()">Reset</button>
+	<br/>
+	<br/>
+	<input id="helmet_check" type="checkbox"/>
+	<span id="helmet_result">Helmet: </span>
+	<br/>
+	<br/>
+	<input id="arms_check" type="checkbox"/>
+	<span id="arms_result">Arms: </span>
+	<br/>
+	<br/>
+	<input id="chest_check" type="checkbox"/>
+	<span id="chest_result">Chest: </span>
+	<br/>
+	<br/>
+	<input id="legs_check" type="checkbox"/>
+	<span id="legs_result">Legs: </span>
+	<br/>
+	<br/>
+	<input id="cloak_check" type="checkbox"/>
+	<span id="cloak_result">Cloak: </span>
+	<br/>
+	<br/>
+	<input id="bond_check" type="checkbox"/>
+	<span id="bond_result">Bond: </span>
+	<br/>
+	<br/>
+	<input id="mark_check" type="checkbox"/>
+	<span id="mark_result">Mark: </span>
+	<br/>
+	<br/>
+	<script>
         var helmetModsArray = ["Arc Impact Mod", "Solar Ordnance Mod", "Void Ordnance Mod", "Solar Paragon Mod", "Void Paragon Mod", "Energy Bracket Mod", "Impact Absorption Mod"];
         var armsModsArray = ["Arc Impact Mod", "Void Impact Mod", "Void Ordnance Mod", "Arc Paragon Mod", "Kinetic Munition Loader", "Energy Counterbalance Mod", "Acceleration Mod"];
         var chestModsArray = ["Solar Impact Mod", "Arc Ordnance Mod", "Arc Paragon Mod", "Void Paragon Mod", "Kinetic Counterbalance Mod", "Power Bracket Mod", "Power Munition Loader"];
@@ -43,78 +64,78 @@
         var cloakModsArray = ["Void Paragon Mod", "Kinetic Counterbalance Mod", "Energy Counterbalance Mod", "Acceleration Mod"];
         var bondModsArray = ["Solar Paragon Mod", "Energy Bracket Mod", "Power Bracket Mod", "Self-Repairing Mod"];
         var markModsArray = ["Arc Paragon Mod", "Kinetic Munition Loader", "Power Munition Loader", "Impact Absorption Mod"];
-        
+
         function modCalc() {
         	var selection1 = document.getElementById("mod_selection1").value;
         	console.log(selection1);
         	var x;
-        	
+
         	for (x in helmetModsArray) {
         		if (selection1 == helmetModsArray[x] && !document.getElementById("helmet_check").checked) {
         			document.getElementById("helmet_result").innerHTML = "Helmet : " + helmetModsArray[x];
         		}
         	}
-        	
+
         	for (x in armsModsArray) {
         		if (selection1 == armsModsArray[x] && !document.getElementById("arms_check").checked) {
         			document.getElementById("arms_result").innerHTML = "Arms : " + armsModsArray[x];
         		}
         	}
-        
+
         for (x in chestModsArray) {
         		if (selection1 == chestModsArray[x] && !document.getElementById("chest_check").checked) {
         			document.getElementById("chest_result").innerHTML = "Chest : " + chestModsArray[x];
         		}
         	}
-        	
+
         	for (x in legsModsArray) {
         		if (selection1 == legsModsArray[x] && !document.getElementById("legs_check").checked) {
         			document.getElementById("legs_result").innerHTML = "Legs : " + legsModsArray[x];
         		}
         	}
-        	
+
         	for (x in cloakModsArray) {
         		if (selection1 == cloakModsArray[x] && !document.getElementById("cloak_check").checked) {
         			document.getElementById("cloak_result").innerHTML = "Cloak : " + cloakModsArray[x];
         		}
         	}
-        	
+
         	for (x in bondModsArray) {
         		if (selection1 == bondModsArray[x] && !document.getElementById("bond_check").checked) {
         			document.getElementById("bond_result").innerHTML = "Bond : " + bondModsArray[x];
         		}
         	}
-        	
+
         	for (x in markModsArray) {
         		if (selection1 == markModsArray[x] && !document.getElementById("mark_check").checked) {
         			document.getElementById("mark_result").innerHTML = "Mark : " + markModsArray[x];
         		}
         	}
         }
-        
+
         function reset() {
-        if (!document.getElementById("helmet_check").checked) {
-        document.getElementById("helmet_result").innerHTML = "Helmet : ";
+			if (!document.getElementById("helmet_check").checked) {
+				document.getElementById("helmet_result").innerHTML = "Helmet : ";
+			}
+			if (!document.getElementById("arms_check").checked) {
+				document.getElementById("arms_result").innerHTML = "Arms : ";
+			}
+			if (!document.getElementById("chest_check").checked) {
+				document.getElementById("chest_result").innerHTML = "Chest : ";
+			}
+			if (!document.getElementById("legs_check").checked) {
+				document.getElementById("legs_result").innerHTML = "Legs : ";
+			}
+			if (!document.getElementById("cloak_check").checked) {
+				document.getElementById("cloak_result").innerHTML = "Cloak : ";
+			}
+			if (!document.getElementById("bond_check").checked) {
+				document.getElementById("bond_result").innerHTML = "Bond : ";
+			}
+			if (!document.getElementById("mark_check").checked) {
+			document.getElementById("mark_result").innerHTML = "Mark : ";
+			}
         }
-        if (!document.getElementById("arms_check").checked) {
-        document.getElementById("arms_result").innerHTML = "Arms : ";
-        }
-        if (!document.getElementById("chest_check").checked) {
-        document.getElementById("chest_result").innerHTML = "Chest : ";
-        }
-        if (!document.getElementById("legs_check").checked) {
-        document.getElementById("legs_result").innerHTML = "Legs : ";
-        }
-        if (!document.getElementById("cloak_check").checked) {
-        document.getElementById("cloak_result").innerHTML = "Cloak : ";
-        }
-        if (!document.getElementById("bond_check").checked) {
-        document.getElementById("bond_result").innerHTML = "Bond : ";
-        }
-        if (!document.getElementById("mark_check").checked) {
-        document.getElementById("mark_result").innerHTML = "Mark : ";
-        }
-        }
-        
-    </script>
+
+	</script>
 </html>
