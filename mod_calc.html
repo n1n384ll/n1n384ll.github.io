@@ -1,8 +1,8 @@
 <html>
 	<h1>Mod Calc</h1>
-	<a href="https://www.reddit.com/r/DestinyTheGame/comments/72khpg/massive_breakdown_of_destiny_2_mods_with_numbers/">Based on data from here.</a></br>
+	<a href="https://www.reddit.com/r/DestinyTheGame/comments/72khpg/massive_breakdown_of_destiny_2_mods_with_numbers/">Based on data from here.</a><br/>
 	<p>Select mod to optimize for:</p>
-	<select name="mod_selection1" id="mod_selection1">
+	<select id="mod_selection">
 		<option value=""/>
 		<option value="Acceleration Mod">Acceleration Mod</option>
 		<option value="Arc Impact Mod">Arc Impact Mod</option>
@@ -28,97 +28,196 @@
 	<button type="button" onclick="reset()">Reset</button>
 	<br/><br/>
 	<input id="helmet_check" type="checkbox"/>
-	<span id="helmet_result">Helmet: </span>
+	<span id="helmet_result">Helmet : </span>
+	<select id="helmet_mod_selection">
+		<option value=""/>
+		<option value="Arc Impact Mod">Arc Impact Mod</option>
+		<option value="Energy Bracket Mod">Energy Bracket Mod</option>
+		<option value="Impact Absorption Mod">Impact Absorption Mod</option>
+		<option value="Solar Ordnance Mod">Solar Ordnance Mod</option>
+		<option value="Solar Paragon Mod">Solar Paragon Mod</option>
+		<option value="Void Ordnance Mod">Void Ordnance Mod</option>
+		<option value="Void Paragon Mod">Void Paragon Mod</option>
+	</select>
 	<br/><br/>
 	<input id="arms_check" type="checkbox"/>
-	<span id="arms_result">Arms: </span>
+	<span id="arms_result">Arms : </span>
+	<select id="arms_mod_selection">
+		<option value=""/>
+		<option value="Acceleration Mod">Acceleration Mod</option>
+		<option value="Arc Impact Mod">Arc Impact Mod</option>
+		<option value="Arc Paragon Mod">Arc Paragon Mod</option>
+		<option value="Energy Counterbalance Mod">Energy Counterbalance Mod</option>
+		<option value="Kinetic Munition Loader">Kinetic Munition Loader</option>
+		<option value="Void Impact Mod">Void Impact Mod</option>
+		<option value="Void Ordnance Mod">Void Ordnance Mod</option>
+	</select>
 	<br/><br/>
 	<input id="chest_check" type="checkbox"/>
-	<span id="chest_result">Chest: </span>
+	<span id="chest_result">Chest : </span>
+	<select id="chest_mod_selection">
+		<option value=""/>
+		<option value="Arc Ordnance Mod">Arc Ordnance Mod</option>
+		<option value="Arc Paragon Mod">Arc Paragon Mod</option>
+		<option value="Kinetic Counterbalance Mod">Kinetic Counterbalance Mod</option>
+		<option value="Power Bracket Mod">Power Bracket Mod</option>
+		<option value="Power Munition Loader">Power Munition Loader</option>
+		<option value="Solar Impact Mod">Solar Impact Mod</option>
+		<option value="Void Paragon Mod">Void Paragon Mod</option>
+	</select>
 	<br/><br/>
 	<input id="legs_check" type="checkbox"/>
-	<span id="legs_result">Legs: </span>
+	<span id="legs_result">Legs : </span>
+	<select id="legs_mod_selection">
+		<option value=""/>
+		<option value="Arc Ordnance Mod">Arc Ordnance Mod</option>
+		<option value="Self-Repairing Mod">Self-Repairing Mod</option>
+		<option value="Solar Impact Mod">Solar Impact Mod</option>
+		<option value="Solar Ordnance Mod">Solar Ordnance Mod</option>
+		<option value="Solar Paragon Mod">Solar Paragon Mod</option>
+		<option value="Void Impact Mod">Void Impact Mod</option>
+	</select>
 	<br/><br/>
 	<input id="cloak_check" type="checkbox"/>
-	<span id="cloak_result">Cloak: </span>
+	<span id="cloak_result">Cloak : </span>
+	<select id="cloak_mod_selection">
+		<option value=""/>
+		<option value="Acceleration Mod">Acceleration Mod</option>
+		<option value="Energy Counterbalance Mod">Energy Counterbalance Mod</option>
+		<option value="Kinetic Counterbalance Mod">Kinetic Counterbalance Mod</option>
+		<option value="Void Paragon Mod">Void Paragon Mod</option>
+	</select>
 	<br/><br/>
 	<input id="bond_check" type="checkbox"/>
-	<span id="bond_result">Bond: </span>
+	<span id="bond_result">Bond : </span>
+	<select id="bond_mod_selection">
+		<option value=""/>
+		<option value="Energy Bracket Mod">Energy Bracket Mod</option>
+		<option value="Power Bracket Mod">Power Bracket Mod</option>
+		<option value="Self-Repairing Mod">Self-Repairing Mod</option>
+		<option value="Solar Paragon Mod">Solar Paragon Mod</option>
+	</select>
 	<br/><br/>
 	<input id="mark_check" type="checkbox"/>
-	<span id="mark_result">Mark: </span>
+	<span id="mark_result">Mark : </span>
+	<select id="mark_mod_selection">
+		<option value=""/>
+		<option value="Arc Paragon Mod">Arc Paragon Mod</option>
+		<option value="Impact Absorption Mod">Impact Absorption Mod</option>
+		<option value="Kinetic Munition Loader">Kinetic Munition Loader</option>
+		<option value="Power Munition Loader">Power Munition Loader</option>
+	</select>
 	<br/><br/>
 
 	<script>
-        var helmetModsArray = ["Arc Impact Mod", "Solar Ordnance Mod", "Void Ordnance Mod", "Solar Paragon Mod", "Void Paragon Mod", "Energy Bracket Mod", "Impact Absorption Mod"];
-        var armsModsArray = ["Arc Impact Mod", "Void Impact Mod", "Void Ordnance Mod", "Arc Paragon Mod", "Kinetic Munition Loader", "Energy Counterbalance Mod", "Acceleration Mod"];
-        var chestModsArray = ["Solar Impact Mod", "Arc Ordnance Mod", "Arc Paragon Mod", "Void Paragon Mod", "Kinetic Counterbalance Mod", "Power Bracket Mod", "Power Munition Loader"];
-        var legsModsArray = ["Solar Impact Mod", "Void Impact Mod", "Arc Ordnance Mod", "Solar Ordnance Mod", "Solar Paragon Mod", "Self-Repairing Mod"];
-        var cloakModsArray = ["Void Paragon Mod", "Kinetic Counterbalance Mod", "Energy Counterbalance Mod", "Acceleration Mod"];
-        var bondModsArray = ["Solar Paragon Mod", "Energy Bracket Mod", "Power Bracket Mod", "Self-Repairing Mod"];
-        var markModsArray = ["Arc Paragon Mod", "Kinetic Munition Loader", "Power Munition Loader", "Impact Absorption Mod"];
+        var helmetModsArray = [
+			"Arc Impact Mod", 
+			"Energy Bracket Mod", 
+			"Impact Absorption Mod", 
+			"Solar Ordnance Mod", 
+			"Solar Paragon Mod", 
+			"Void Ordnance Mod", 
+			"Void Paragon Mod"];
+        var armsModsArray = [
+			"Acceleration Mod",
+			"Arc Impact Mod", 
+			"Arc Paragon Mod", 
+			"Energy Counterbalance Mod",
+			"Kinetic Munition Loader", 
+			"Void Impact Mod", 
+			"Void Ordnance Mod"];
+        var chestModsArray = [
+			"Arc Ordnance Mod", 
+			"Arc Paragon Mod", 
+			"Kinetic Counterbalance Mod",
+			"Power Bracket Mod", 
+			"Power Munition Loader",
+			"Solar Impact Mod", 
+			"Void Paragon Mod"];
+        var legsModsArray = [
+			"Arc Ordnance Mod", 
+			"Self-Repairing Mod",
+			"Solar Impact Mod", 
+			"Solar Ordnance Mod", 
+			"Solar Paragon Mod",
+			"Void Impact Mod"];
+        var cloakModsArray = [
+			"Acceleration Mod",
+			"Energy Counterbalance Mod",
+			"Kinetic Counterbalance Mod",
+			"Void Paragon Mod"];
+        var bondModsArray = [
+			"Energy Bracket Mod", 
+			"Power Bracket Mod", 
+			"Self-Repairing Mod",
+			"Solar Paragon Mod"];
+        var markModsArray = [
+			"Arc Paragon Mod", 
+			"Impact Absorption Mod", 
+			"Kinetic Munition Loader",
+			"Power Munition Loader"];
 
         function modCalc() {
-        	var selection1 = document.getElementById("mod_selection1").value;
+        	var selection1 = document.getElementById("mod_selection").value;
         	var x;
         	for (x in helmetModsArray) {
         		if (selection1 == helmetModsArray[x] && !document.getElementById("helmet_check").checked) {
-        			document.getElementById("helmet_result").innerHTML = "Helmet : " + helmetModsArray[x];
+					document.getElementById("helmet_mod_selection").value = helmetModsArray[x];
         		}
         	}
         	for (x in armsModsArray) {
         		if (selection1 == armsModsArray[x] && !document.getElementById("arms_check").checked) {
-        			document.getElementById("arms_result").innerHTML = "Arms : " + armsModsArray[x];
+        			document.getElementById("arms_mod_selection").value = armsModsArray[x];
         		}
         	}
 			for (x in chestModsArray) {
         		if (selection1 == chestModsArray[x] && !document.getElementById("chest_check").checked) {
-        			document.getElementById("chest_result").innerHTML = "Chest : " + chestModsArray[x];
+        			document.getElementById("chest_mod_selection").value = chestModsArray[x];
         		}
         	}
         	for (x in legsModsArray) {
         		if (selection1 == legsModsArray[x] && !document.getElementById("legs_check").checked) {
-        			document.getElementById("legs_result").innerHTML = "Legs : " + legsModsArray[x];
+        			document.getElementById("legs_mod_selection").value = legsModsArray[x];
         		}
         	}
         	for (x in cloakModsArray) {
         		if (selection1 == cloakModsArray[x] && !document.getElementById("cloak_check").checked) {
-        			document.getElementById("cloak_result").innerHTML = "Cloak : " + cloakModsArray[x];
+        			document.getElementById("cloak_mod_selection").value = cloakModsArray[x];
         		}
         	}
         	for (x in bondModsArray) {
         		if (selection1 == bondModsArray[x] && !document.getElementById("bond_check").checked) {
-        			document.getElementById("bond_result").innerHTML = "Bond : " + bondModsArray[x];
+        			document.getElementById("bond_mod_selection").value = bondModsArray[x];
         		}
         	}
         	for (x in markModsArray) {
         		if (selection1 == markModsArray[x] && !document.getElementById("mark_check").checked) {
-        			document.getElementById("mark_result").innerHTML = "Mark : " + markModsArray[x];
+        			document.getElementById("mark_mod_selection").value = markModsArray[x];
         		}
         	}
         }
 
         function reset() {
 			if (!document.getElementById("helmet_check").checked) {
-				document.getElementById("helmet_result").innerHTML = "Helmet : ";
+				document.getElementById("helmet_mod_selection").value = "";
 			}
 			if (!document.getElementById("arms_check").checked) {
-				document.getElementById("arms_result").innerHTML = "Arms : ";
+				document.getElementById("arms_mod_selection").value = "";
 			}
 			if (!document.getElementById("chest_check").checked) {
-				document.getElementById("chest_result").innerHTML = "Chest : ";
+				document.getElementById("chest_mod_selection").value = "";
 			}
 			if (!document.getElementById("legs_check").checked) {
-				document.getElementById("legs_result").innerHTML = "Legs : ";
+				document.getElementById("legs_mod_selection").value = "";
 			}
 			if (!document.getElementById("cloak_check").checked) {
-				document.getElementById("cloak_result").innerHTML = "Cloak : ";
+				document.getElementById("cloak_mod_selection").value = "";
 			}
 			if (!document.getElementById("bond_check").checked) {
-				document.getElementById("bond_result").innerHTML = "Bond : ";
+				document.getElementById("bond_mod_selection").value = "";
 			}
 			if (!document.getElementById("mark_check").checked) {
-			document.getElementById("mark_result").innerHTML = "Mark : ";
+				document.getElementById("mark_mod_selection").value = "";
 			}
         }
 
